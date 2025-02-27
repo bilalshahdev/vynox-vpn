@@ -8,7 +8,7 @@ const Subscribe = () => {
       <HighlightText
             text="Subscribe Now To Get Special Features!"
             highlightWords={["Special", "Features!"]}
-            className="text-2xl md:text-4xl font-bold leading-tigt"
+            className="text-2xl md:text-4xl font-bold"
           />
           <p className="text-muted-foreground">Let's subscribe with us and find the fun.</p>
       </div>
