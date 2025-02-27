@@ -1,30 +1,31 @@
-import { testimonials } from "@/constants/data";
+import { reviews, reviewsText } from "@/constants/data";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Heading from "../heading";
 import UsersAvatar from "../users-avatars";
+import HighlightText from "../highlight-text";
 
-const TestimonialSection = () => {
-   return (
-    <div>
+const ReviewsSection = () => {
+  return (
+    <div id="reviews" className="pt-20">
       <div className="flex flex-col items-center space-y-4">
-        <UsersAvatar/>
+        <UsersAvatar />
 
         <Heading
-        isJsx
+          isJsx
           heading={
-            <>
-              <span className="text-signature">+18 Million Creators</span> using
-              Vynox VPN
-            </>
+            <HighlightText
+              text={reviewsText.heading}
+              highlightWords={reviewsText.highlightWords}
+            />
           }
           subheading="Our users love using Vynox to build their marketing assets. We empower them to create assets at scale, faster than ever, with cutting-edge technology."
         />
       </div>
 
-      {/* Testimonials Grid */}
+      {/* reviews Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-        {testimonials.map((testimonial) => (
+        {reviews.map((testimonial) => (
           <TestimonialCard key={testimonial.id} testimonial={testimonial} />
         ))}
       </div>
@@ -32,7 +33,7 @@ const TestimonialSection = () => {
   );
 };
 
-export default TestimonialSection;
+export default ReviewsSection;
 
 // Testimonial Card Component
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {

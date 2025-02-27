@@ -1,6 +1,6 @@
 type MenuItem = {
-  href: string;
   label: string;
+  id: string;
 };
 
 interface SecurityFeature {
@@ -20,7 +20,7 @@ interface GetVpn {
 interface SubscriptionPlan {
   id: number;
   title: string;
-  duration: string;
+  duration: number;
   price: number;
   discountPercentage: number;
   originalPrice: number;
@@ -30,6 +30,7 @@ interface SubscriptionPlan {
   guaranteeText: string;
   mostPopular: boolean;
 }
+
 
 interface Testimonial {
   id: number;

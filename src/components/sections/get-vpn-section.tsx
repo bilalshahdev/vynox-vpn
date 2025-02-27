@@ -1,14 +1,11 @@
-import React from "react";
+import { getAndUseVpnText, getVpnData } from "@/constants/data";
 import Heading from "../heading";
-import { getVpnData, securityFeatures } from "@/constants/data";
-import AppLinks from "../app-links";
-import Image from "next/image";
 import { Button } from "../ui/button";
 
 const GetVpnSection = () => {
   return (
     <div>
-      <Heading heading={"How to get and use Vynox VPN?"} />
+      <Heading heading={getAndUseVpnText.heading} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
         {getVpnData.map((getVpn: GetVpn) => (

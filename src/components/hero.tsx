@@ -3,11 +3,13 @@ import HeroImg2 from "../../public/images/hero-img-2.png";
 import Vector from "../../public/images/hero-vector.png";
 import AppLinks from "./app-links";
 import HighlightText from "./highlight-text";
+import { heroTexts } from "@/constants/data";
 
 const Hero = () => {
+  const { heading,highlightWords, subheading } = heroTexts;
   return (
     <>
-      <div className="relative grid grid-cols-1 mt-4 md:mt-0 space-y-0 md:space-y-0 md:grid-cols-2 overflow-hidden">
+      <div id="home" className="relative grid grid-cols-1 mt-4 md:mt-0 space-y-0 md:space-y-0 md:grid-cols-2 overflow-hidden">
         {/* Background Vector Image */}
         <div className="absolute inset-0 -z-10">
           <Image
@@ -22,13 +24,12 @@ const Hero = () => {
         {/* Left Section: Hero Text */}
         <div className="flex flex-col gap-4 md:gap-8 justify-center relative z-10">
           <HighlightText
-            text="Huge Global Network of Fast Vynox VPN"
-            highlightWords={["Global", "Network", "Vynox", "VPN"]}
+            text={heading}
+            highlightWords={highlightWords}
             className="text-3xl md:text-6xl font-semibold leading-tight"
           />
           <p className="text-l md:text-2xl">
-            See VynoxVPN everywhere to make it easier for you when you move
-            locations.
+            {subheading}
           </p>
           <AppLinks />
         </div>

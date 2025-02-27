@@ -5,15 +5,32 @@ import wifi from "../../public/icons/wifi.png";
 import protection from "../../public/icons/protection.png";
 import User from "../../public/images/user.jpg";
 
+import img1 from "../../public/images/users/image-1.png";
+import img2 from "../../public/images/users/image-2.png";
+import img3 from "../../public/images/users/image-3.png";
+import img4 from "../../public/images/users/image-4.png";
+import img5 from "../../public/images/users/image-5.png";
+import img6 from "../../public/images/users/image-6.png";
+import img7 from "../../public/images/users/image-7.png";
+
 export const navMenu: MenuItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/features", label: "features" },
-  { href: "/pricing", label: "pricing" },
-  { href: "/about-us", label: "about us" },
-  { href: "/help", label: "help" },
+  { label: "Home", id: "home" },
+  { label: "features", id: "features" },
+  { label: "servers", id: "servers"},
+  { label: "pricing", id: "pricing"},
+  { label: "reviews", id: "reviews"},
+  // { label: "about us", id: "about-us" },
+  { label: "FAQs", id: "faqs" },
 ];
 
-export const securityFeatures: SecurityFeature[] = [
+export const appLinks = {
+  playstore:
+    "https://play.google.com/store/apps/details?id=vynox.secure.vpn.proxy.master",
+  appstore:
+    "https://apps.apple.com/pk/app/free-vpn-proxy-vpn-master/id6737821640",
+};
+
+export const features: SecurityFeature[] = [
   {
     id: 1,
     title: "6 layers of security",
@@ -68,7 +85,6 @@ export const getVpnData: GetVpn[] = [
   },
 ];
 
-
 export const vpnBenefits: Faq[] = [
   {
     id: "faq-1",
@@ -90,57 +106,57 @@ export const vpnBenefits: Faq[] = [
   },
 ];
 
+export const plans: SubscriptionPlan[] = [
+  // {
+  //   id: 2,
+  //   title: "6 Months Plan",
+  //   duration: 6, // Now it's a number
+  //   discountPercentage: 45,
+  //   originalPrice: 12.73, // Hardcoded 100% price
+  //   price: (12.73 * (1 - 45 / 100)) / 6, // Monthly price calculated
+  //   billedAmount: 12.73 * (1 - 45 / 100), // Total billed amount calculated
+  //   billingCycle: "every 6 months",
+  //   buttonText: "Get Plan",
+  //   guaranteeText: "30-day money-back guarantee",
+  //   mostPopular: false,
+  // },
 
-export const subscriptionPlans: SubscriptionPlan[] = [
-  {
-    id: 1,
-    title: "12 Months Plan",
-    duration: "12 Months",
-    price: 5.0,
-    discountPercentage: 58,
-    originalPrice: 143.88,
-    billedAmount: 59.99,
-    billingCycle: "every 12 months",
-    buttonText: "Get Plan",
-    guaranteeText: "30-day money-back guarantee",
-    mostPopular: true,
-  },
-  {
-    id: 2,
-    title: "6 Months Plan",
-    duration: "6 Months",
-    price: 7.0,
-    discountPercentage: 45,
-    originalPrice: 89.99,
-    billedAmount: 49.99,
-    billingCycle: "every 6 months",
-    buttonText: "Get Plan",
-    guaranteeText: "30-day money-back guarantee",
-    mostPopular: false,
-  },
   {
     id: 3,
     title: "1 Month Plan",
-    duration: "1 Month",
-    price: 9.99,
+    duration: 1,
     discountPercentage: 0,
-    originalPrice: 9.99,
-    billedAmount: 9.99,
+    originalPrice: 2.99,
+    price: 2.99,
+    billedAmount: 2.99,
     billingCycle: "every month",
     buttonText: "Get Plan",
     guaranteeText: "30-day money-back guarantee",
     mostPopular: false,
   },
+  {
+    id: 1,
+    title: "12 Months Plan",
+    duration: 12,
+    discountPercentage: 44,
+    originalPrice: 35.7,
+    price: (35.7 * (1 - 44 / 100)) / 12,
+    billedAmount: 35.7 * (1 - 44 / 100),
+    billingCycle: "every 12 months",
+    buttonText: "Get Plan",
+    guaranteeText: "30-day money-back guarantee",
+    mostPopular: true,
+  },
 ];
 
-export const testimonials: Testimonial[] = [
+export const reviews: Testimonial[] = [
   {
     id: 1,
     name: "Charles Watkins",
     review:
       "Very quick connect. Needs to be better still receiving videos. Really really I love this thank you. I can't live without it! Keep it up. Good free VPN and vpn proxy for VPN. I love it.",
     rating: 5,
-    avatar: User, // Replace with actual image path
+    avatar: User,
     title: "Best free vpn",
   },
   {
@@ -160,6 +176,37 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     avatar: User,
     title: "Free VPN for iPhone",
+  },
+];
+
+export const avatars = [
+  {
+    id: 1,
+    avatar: img1,
+  },
+  {
+    id: 2,
+    avatar: img2,
+  },
+  {
+    id: 3,
+    avatar: img3,
+  },
+  {
+    id: 4,
+    avatar: img4,
+  },
+  {
+    id: 5,
+    avatar: img5,
+  },
+  {
+    id: 6,
+    avatar: img6,
+  },
+  {
+    id: 7,
+    avatar: img7,
   },
 ];
 
@@ -233,3 +280,51 @@ export const footerLinks: FooterLinkCategory[] = [
     ],
   },
 ];
+
+export const heroTexts = {
+  heading: "Huge Global Network of Fast Vynox VPN",
+  highlightWords: ["global", "network", "vynox", "vpn"],
+  subheading:
+    "See VynoxVPN everywhere to make it easier for you when you move locations.",
+};
+
+export const featuresTexts = {
+  heading: "Get free VPN that comes with advanced privacy and security tools",
+  subheading:
+    "Avast Free Antivirus is more than just an antivirus — it also includes these specialist tools:",
+};
+
+export const getAndUseVpnText = {
+  heading: "How to get and use Vynox VPN?",
+};
+
+export const serversText = {
+  heading: "Our Global Fast Server Network",
+  subheading:
+    "You get 5 locations to choose from on a free version, no traffic, bandwidth or time limits. Our servers provide high speeds (same level as premium paid VPNs) with no registration or any personal data collection.",
+};
+
+export const plansText = {
+  heading: "Choose the Best VPN Plan for You",
+  subheading:
+    "Select from our affordable plans and enjoy secure browsing with Vynox VPN.",
+};
+
+export const reviewsText = {
+  heading: "+18 Million Creators using Vynox VPN",
+  highlightWords: ["+18", "Million", "Creators"],
+  subheading:
+    "Our users love using Vynox to build their marketing assets. We empower them to create assets at scale, faster than ever, with cutting-edge technology.",
+};
+
+export const faqsText = {
+  heading: "Have questions? We have answers!",
+  subheading:
+    "Want to know more? You can email us anytime at @web.support@lorem.pk",
+};
+
+export const subscriptionText = {
+  heading: "Subscribe Now To Get Special Features!",
+  highlightWords: ["Special", "Features"],
+  subheading: "Let's subscribe with us and find the fun.",
+};

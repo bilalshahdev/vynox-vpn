@@ -11,7 +11,7 @@ const HighlightText: React.FC<HighlightTextProps> = ({
   ...rest
 }) => {
   return (
-    <h2 {...rest}>
+    <div {...rest}>
       {text.split(" ").map((word, index) => {
         const isHighlighted = highlightWords.some(
           (highlight) => highlight.toLowerCase() === word.toLowerCase()
@@ -26,7 +26,7 @@ const HighlightText: React.FC<HighlightTextProps> = ({
           </span>
         );
       })}
-    </h2>
+    </div>
   );
 };
 

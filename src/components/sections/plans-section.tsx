@@ -1,24 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { subscriptionPlans } from "@/constants/data"; // Import plan data
+import { plans, plansText } from "@/constants/data"; 
 import Heading from "../heading";
 import { Button } from "../ui/button";
 
-const VpnPlansSection = () => {
-  // Find the most popular plan to set as the default selected plan
+const PlansSection = () => {
+  
   const defaultPlan =
-    subscriptionPlans.find((plan) => plan.mostPopular) || subscriptionPlans[0];
+    plans.find((plan) => plan.mostPopular) || plans[0];
   const [selectedPlan, setSelectedPlan] = useState(defaultPlan);
 
   return (
-    <div>
+    <div id="pricing" className="pt-10">
       <Heading
-        heading={"Choose the Best VPN Plan for You"}
-        subheading="Select from our affordable plans and enjoy secure browsing with Vynox VPN."
+        heading={plansText.heading}
+        subheading={plansText.subheading}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-        {subscriptionPlans.map((plan) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+        {plans.map((plan) => (
           <PlanCard
             key={plan.id}
             plan={plan}
@@ -31,7 +31,7 @@ const VpnPlansSection = () => {
       {/* Selected Plan Summary */}
       <div className="mt-6 text-center">
         <p className="text-lg font-semibold">
-          Selected Plan:{" "}
+          Selected Plan:
           <span className="text-signature">{selectedPlan.title}</span>
         </p>
       </div>
@@ -39,9 +39,9 @@ const VpnPlansSection = () => {
   );
 };
 
-export default VpnPlansSection;
+export default PlansSection;
 
-// Plan Card Component
+
 const PlanCard = ({
   plan,
   isSelected,
@@ -93,7 +93,7 @@ const PlanCard = ({
 
       {/* Billed Amount */}
       <p className="text-muted-foreground text-sm mt-1">
-        Billed <span className="line-through">${originalPrice.toFixed(2)}</span>{" "}
+        Billed {discountPercentage > 0 && <span className="line-through">${originalPrice.toFixed(2)}</span>}{" "}
         ${billedAmount.toFixed(2)} {billingCycle}
       </p>
 

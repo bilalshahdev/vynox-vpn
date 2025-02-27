@@ -2,14 +2,14 @@ import Heading from "../heading";
 import locationsMap from "../../../public/images/locations-map.png";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { serversText } from "@/constants/data";
 
-const ServerMapSection = () => {
+const ServersSection = () => {
   return (
-    <div>
+    <div id="servers" className="pt-10">
       <Heading
-        heading={"Our Global Fast Server Network"}
-        subheading="You get 5 locations to choose from on a free version, no traffic, bandwidth or time limits. Our servers provide high speeds
-(same level as premium paid VPNs) with no registration or any personal data collection."
+        heading={serversText.heading}
+        subheading={serversText.subheading}
       />
       <div className="py-8">
         <Image src={locationsMap} alt="Locations Map" />
@@ -21,4 +21,4 @@ const ServerMapSection = () => {
   );
 };
 
-export default ServerMapSection;
+export default ServersSection;

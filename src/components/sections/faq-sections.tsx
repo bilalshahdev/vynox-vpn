@@ -3,7 +3,7 @@ import Faqs from "../faqs";
 
 const FaqSection = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+    <div id="faqs" className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 pt-20">
       <div>
         <div className="max-w-screen-md md:gap-4 mx-auto flex flex-col gap-4 my-4 md:my-8">
           <h2 className="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/50 leading-tight">

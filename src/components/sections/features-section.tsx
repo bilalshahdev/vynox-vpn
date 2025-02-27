@@ -1,20 +1,20 @@
 import React from "react";
 import Heading from "../heading";
-import { securityFeatures } from "@/constants/data";
+import { featuresTexts, features } from "@/constants/data";
 import AppLinks from "../app-links";
 import Image from "next/image";
 
-const SecurityFeatures = () => {
+const FeaturesSection = () => {
   return (
-    <div>
+    <div id="features" className="pt-10">
       <Heading
         heading={
-          "Get free VPN that comes with advanced privacy and security tools"
+          featuresTexts.heading
         }
-        subheading="Avast Free Antivirus is more than just an antivirus — it also includes these specialist tools:"
+        subheading={featuresTexts.subheading}
       />
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 py-8">
-        {securityFeatures.map((feature: SecurityFeature) => (
+        {features.map((feature: SecurityFeature) => (
           <FeatureCard key={feature.id} feature={feature} />
         ))}
       </div>
@@ -25,7 +25,7 @@ const SecurityFeatures = () => {
   );
 };
 
-export default SecurityFeatures;
+export default FeaturesSection;
 
 const FeatureCard = ({ feature }: { feature: SecurityFeature }) => {
   const { title, description, icon } = feature;

@@ -7,24 +7,34 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { AlignJustify } from "lucide-react";
-import { useState } from "react";
-import Link from "next/link";
 import { navMenu } from "@/constants/data";
-import { Button } from "./ui/button";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // Import for accessibility
+import { AlignJustify } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "./ui/button";
 
-const MenuSheet = () => {
+const MenuSheet = ({
+  handleScrollToSection,
+  activeSection,
+  isActive
+}: {
+  handleScrollToSection: (sectionId: string) => void;
+  activeSection: string;
+  isActive: (path: string, border?: boolean) => string;
+}) => {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
 
-  const isActive = (path: string) =>
-    pathname === path
-      ? "text-signature font-semibold"
-      : "text-muted-foreground hover:text-signature";
-
+  // <button
+  // key={item.id}
+  // onClick={() => handleScrollToSection(item.id)}
+  // className={cn("transition-all text-lg hover:text-signature capitalize")}
+  // >
+  const handleClick = (id: string) => {
+    handleScrollToSection(id);
+    setOpen(false);
+  };
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -39,18 +49,18 @@ const MenuSheet = () => {
           <SheetDescription>Menu</SheetDescription>
         </VisuallyHidden>
 
-
         {/* Navigation Links */}
         <div className="flex flex-col gap-6 mt-6 capitalize">
           {navMenu.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn("transition-all text-lg", isActive(item.href))}
-              onClick={() => setOpen(false)} // Close sheet on click
+            <div
+              key={item.id}
+              onClick={() => handleClick(item.id)}
+              className={cn(
+                "transition-all text-lg hover:text-signature capitalize", isActive(item.id, false)
+              )}
             >
               {item.label}
-            </Link>
+            </div>
           ))}
         </div>
 
@@ -58,7 +68,7 @@ const MenuSheet = () => {
         <div className="flex flex-col gap-4 mb-6">
           <Link
             href="/sign-in"
-            className={cn("transition-all text-lg", isActive("/sign-in"))}
+            className={cn("transition-all text-lg", isActive("/sign-in", false))}
             onClick={() => setOpen(false)}
           >
             Sign In

@@ -12,48 +12,82 @@ import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const pathname = usePathname();
+  const isActive = (path: string, border = true) => {
+    return pathname === path || activeSection === path
+      ? `text-signature ${border ? "border-b border-signature" : ""}`
+      : "hover:text-signature";
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 50);
-      setLastScrollY(currentScrollY);
+      if (isScrolling) return;
+
+      const scrollPosition = window.scrollY;
+      const sections = navMenu
+        .map((item) => document.getElementById(item.id))
+        .filter(Boolean);
+
+      sections.forEach((section) => {
+        if (section) {
+          const { offsetTop, offsetHeight } = section;
+          if (
+            scrollPosition >= offsetTop - 50 &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section.id);
+          }
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
 
-  const pathname = usePathname();
-  const isActive = (path: string) => {
-    return pathname === path
-      ? "text-signature border-b border-signature"
-      : "hover:text-signature";
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isScrolling]);
+
+  const handleScrollToSection = (sectionId: string) => {
+    setIsScrolling(true);
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      setTimeout(() => {
+        setActiveSection(sectionId);
+        setIsScrolling(false);
+      }, 500);
+    }
   };
+
   return (
     <nav
       className={cn(
-        "sticky top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md transition-all duration-300 ease-in-out",
-        !isVisible && "translate-y-[-100%]"
+        "sticky top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md transition-all duration-300 ease-in-out"
       )}
     >
       <Container className="h-16 flex items-center justify-between capitalize">
         <Brand />
         <div className="hidden md:flex items-center w-2/3 gap-8">
           <div className="flex items-center gap-8 text-muted-foreground w-2/3">
-            {navMenu.map((item: MenuItem) => (
-              <Link
-                key={item.href}
-                href={item.href}
+            {navMenu.map((item) => (
+              <button
+                key={item.id}
+                onClick={() =>
+                  item.id === "home"
+                    ? window.scrollTo({ top: 0, behavior: "smooth" })
+                    : handleScrollToSection(item.id)
+                }
                 className={cn(
-                  "transition-colors flex items-center py-1",
-                  isActive(item.href)
+                  "transition-colors flex items-center py-1 capitalize",
+                  isActive(item.id)
                 )}
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
           </div>
           <div className="flex items-center justify-between gap-8">
@@ -74,7 +108,11 @@ const Navbar = () => {
         </div>
         <div className="md:hidden flex items-center gap-4">
           <ThemeToggle />
-          <MenuSheet/>
+          <MenuSheet
+            handleScrollToSection={handleScrollToSection}
+            activeSection={activeSection}
+            isActive={isActive}
+          />
         </div>
       </Container>
     </nav>
