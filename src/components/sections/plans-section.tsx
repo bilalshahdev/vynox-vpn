@@ -1,22 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { plans, plansText } from "@/constants/data"; 
+import { appLinks, plans, plansText } from "@/constants/data";
 import Heading from "../heading";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const PlansSection = () => {
-  
-  const defaultPlan =
-    plans.find((plan) => plan.mostPopular) || plans[0];
+  const defaultPlan = plans.find((plan) => plan.mostPopular) || plans[0];
   const [selectedPlan, setSelectedPlan] = useState(defaultPlan);
 
   return (
     <div id="pricing" className="pt-10">
-      <Heading
-        heading={plansText.heading}
-        subheading={plansText.subheading}
-      />
+      <Heading heading={plansText.heading} subheading={plansText.subheading} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
         {plans.map((plan) => (
           <PlanCard
@@ -27,20 +23,11 @@ const PlansSection = () => {
           />
         ))}
       </div>
-
-      {/* Selected Plan Summary */}
-      <div className="mt-6 text-center">
-        <p className="text-lg font-semibold">
-          Selected Plan:
-          <span className="text-signature">{selectedPlan.title}</span>
-        </p>
-      </div>
     </div>
   );
 };
 
 export default PlansSection;
-
 
 const PlanCard = ({
   plan,
@@ -67,7 +54,7 @@ const PlanCard = ({
     <div
       onClick={onSelect}
       className={`relative flex flex-col items-center bg-secondary p-8 rounded-lg shadow-lg text-center space-y-4 cursor-pointer transition-all duration-200 ${
-        isSelected ? "border-4 border-signature scale-105" : ""
+        isSelected ? "border-4 border-signature scale-105 shadow-xl" : ""
       }`}
     >
       {/* Most Popular Badge */}
@@ -93,17 +80,22 @@ const PlanCard = ({
 
       {/* Billed Amount */}
       <p className="text-muted-foreground text-sm mt-1">
-        Billed {discountPercentage > 0 && <span className="line-through">${originalPrice.toFixed(2)}</span>}{" "}
+        Billed{" "}
+        {discountPercentage > 0 && (
+          <span className="line-through">${originalPrice.toFixed(2)}</span>
+        )}{" "}
         ${billedAmount.toFixed(2)} {billingCycle}
       </p>
 
       {/* Select Plan Button */}
-      <Button
-        variant={isSelected ? "signature" : "default"}
-        className="px-4 py-2 rounded-lg mt-4 w-full font-semibold"
-      >
-        {isSelected ? "Selected" : buttonText}
-      </Button>
+      <Link href={appLinks.playstore} target="_blank" rel="noopener noreferrer" className="w-full">
+        <Button
+          variant={isSelected ? "signature" : "default"}
+          className="px-4 py-2 rounded-lg mt-4 w-full font-semibold"
+        >
+          {buttonText}
+        </Button>
+      </Link>
 
       {/* Guarantee */}
       <p className="text-muted-foreground text-sm flex items-center justify-center mt-3">
