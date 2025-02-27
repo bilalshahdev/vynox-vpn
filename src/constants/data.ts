@@ -1,9 +1,8 @@
-import { FaDownload, FaStar, FaCheckCircle } from "react-icons/fa";
-import layers from "../../public/icons/layers.png";
+import { FaCheckCircle, FaDownload, FaStar } from "react-icons/fa";
 import install from "../../public/icons/install.png";
-import wifi from "../../public/icons/wifi.png";
+import layers from "../../public/icons/layers.png";
 import protection from "../../public/icons/protection.png";
-import User from "../../public/images/user.jpg";
+import wifi from "../../public/icons/wifi.png";
 
 import img1 from "../../public/images/users/image-1.png";
 import img2 from "../../public/images/users/image-2.png";
@@ -156,7 +155,7 @@ export const reviews: Testimonial[] = [
     review:
       "Very quick connect. Needs to be better still receiving videos. Really really I love this thank you. I can't live without it! Keep it up. Good free VPN and vpn proxy for VPN. I love it.",
     rating: 5,
-    avatar: User,
+    avatar: img1,
     title: "Best free vpn",
   },
   {
@@ -165,7 +164,7 @@ export const reviews: Testimonial[] = [
     review:
       "Great and reliable vpn! Works great. It saves a lot of time because it is super fast. I love this one. Worth a try. It's a good free VPN and vpn proxy it does what it supposed to do.",
     rating: 5,
-    avatar: User,
+    avatar: img2,
     title: "Protect your privacy with a free VPN",
   },
   {
@@ -174,7 +173,7 @@ export const reviews: Testimonial[] = [
     review:
       "It’s super useful. Yeah skyvpn is definitely the best one. Free and gets the job done right. Good free VPN and vpn proxy server for everyone. Simple and easy to get along.",
     rating: 5,
-    avatar: User,
+    avatar: img3,
     title: "Free VPN for iPhone",
   },
 ];
@@ -253,33 +252,34 @@ export const footerLinks: FooterLinkCategory[] = [
   {
     title: "Product",
     links: [
-      { name: "Download", href: "/download" },
-      { name: "Pricing", href: "/pricing" },
-      { name: "Locations", href: "/locations" },
-      { name: "Server", href: "/server" },
-      { name: "Countries", href: "/countries" },
-      { name: "Blog", href: "/blog" },
+      { name: "Download", href: "#" },
+      { name: "Pricing", href: "#" },
+      { name: "Locations", href: "#" },
+      { name: "Server", href: "#" },
+      { name: "Countries", href: "#" },
+      { name: "Blog", href: "#" },
     ],
   },
   {
     title: "Engage",
     links: [
-      { name: "VynoxVPN", href: "/vpn" },
-      { name: "FAQ", href: "/faq" },
-      { name: "Tutorials", href: "/tutorials" },
-      { name: "About Us", href: "/about" },
-      { name: "Privacy Policy", href: "/privacy-policy" },
-      { name: "Terms of Service", href: "/terms-of-service" },
+      { name: "VynoxVPN", href: "#" },
+      { name: "FAQ", href: "#" },
+      { name: "Tutorials", href: "#" },
+      { name: "About Us", href: "#" },
+      { name: "Privacy Policy", href: "#" },
+      { name: "Terms of Service", href: "#" },
     ],
   },
   {
     title: "Earn Money",
     links: [
-      { name: "Affiliate", href: "/affiliate" },
-      { name: "Become Partner", href: "/partner" },
+      { name: "Affiliate", href: "#" },
+      { name: "Become Partner", href: "#" },
     ],
   },
 ];
+
 
 export const heroTexts = {
   heading: "Huge Global Network of Fast Vynox VPN",

@@ -71,7 +71,7 @@ const Navbar = () => {
     >
       <Container className="h-16 flex items-center justify-between capitalize">
         <Brand />
-        <div className="hidden md:flex items-center w-2/3 gap-8">
+        <div className="hidden md:flex items-center justify-between w-2/3 gap-8">
           <div className="flex items-center gap-8 text-muted-foreground w-2/3">
             {navMenu.map((item) => (
               <button
@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center justify-between gap-8">
             <Link
-              href="/sign-in"
+              href="#"
               className={cn("transition-colors", isActive("/sign-in"))}
             >
               sign in
@@ -101,10 +101,11 @@ const Navbar = () => {
               variant={"outline"}
               className="capitalize border-foreground rounded-full hover:bg-signature hover:border-signature"
             >
-              <Link href="/sign-up">sign up</Link>
+              <Link href="#">sign up</Link>
             </Button>
             <ThemeToggle />
           </div>
+          {/* <ThemeToggle /> */}
         </div>
         <div className="md:hidden flex items-center gap-4">
           <ThemeToggle />

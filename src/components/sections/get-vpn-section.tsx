@@ -1,6 +1,7 @@
-import { getAndUseVpnText, getVpnData } from "@/constants/data";
+import { appLinks, getAndUseVpnText, getVpnData } from "@/constants/data";
 import Heading from "../heading";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const GetVpnSection = () => {
   return (
@@ -13,7 +14,16 @@ const GetVpnSection = () => {
         ))}
       </div>
       <div className="flex flex-col  items-center">
-        <Button variant={"signature"}>Start VPN Free trial Now</Button>
+        <Link
+          href={appLinks.playstore}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button variant={"signature"}>
+            Start VPN Free trial Now
+          </Button>
+        </Link>
+        {/* <Button variant={"signature"}>Start VPN Free trial Now</Button> */}
       </div>
     </div>
   );

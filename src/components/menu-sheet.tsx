@@ -67,7 +67,7 @@ const MenuSheet = ({
         {/* Sign In & Sign Up Buttons (Placed at the Bottom) */}
         <div className="flex flex-col gap-4 mb-6">
           <Link
-            href="/sign-in"
+            href="#"
             className={cn("transition-all text-lg", isActive("/sign-in", false))}
             onClick={() => setOpen(false)}
           >
@@ -78,7 +78,7 @@ const MenuSheet = ({
             className="capitalize border-foreground rounded-full hover:bg-signature hover:border-signature"
             onClick={() => setOpen(false)}
           >
-            <Link href="/sign-up">Sign Up</Link>
+            <Link href="#">Sign Up</Link>
           </Button>
         </div>
       </SheetContent>
